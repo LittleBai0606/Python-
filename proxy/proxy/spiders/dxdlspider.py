@@ -16,15 +16,9 @@ class DxdlspiderSpider(scrapy.Spider):
         items = []
         for sub in subSelector:
             item = ProxyItem()
-            item['ip'] = sub.xpath('.//td[2]/text()').extract()[0]
-            item['port'] = sub.xpath('.//td[3]/text()').extract()[0]
-            item['type'] = sub.xpath('.//td[5]/text()').extract()[0]
-            if sub.xpath('.//td[4]/a/text()'):
-                item['location'] = sub.xpath('//td[4]/a/text()').extract()[0]
-            else:
-                item['location'] = sub.xpath('.//td[4]/text()').extract()[0]
-            item['protocol'] = sub.xpath('.//td[6]/text()').extract()[0]
-            item['source'] = 'xicidaili'
+            ip= sub.xpath('.//td[2]/text()').extract()[0]
+            port= sub.xpath('.//td[3]/text()').extract()[0]
+            item['addr'] = ip + ':' + port;
             items.append(item)
         return items
 

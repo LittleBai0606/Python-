@@ -15,23 +15,15 @@ class ProxyPipeline(object):
         if spider.name == 'dxdlspider':
             today = time.strftime('%Y-%m-%d', time.localtime())
             filename = base_dir + '/result/' + today + '_dxdl_proxy.txt'
-            with open(filename, 'a') as fp:
-                fp.write(item['ip'].strip() + '\t')
-                fp.write(item['port'].strip() + '\t')
-                fp.write(item['protocol'].strip() + '\t')
-                fp.write(item['type'].strip() + '\t')
-                fp.write(item['location'].strip() + '\t')
-                fp.write(item['source'].strip() + '\t\n')
+            with open(filename, 'a', encoding='gbk') as fp:
+                fp.write(item['addr'].strip() + '\n')
+
 
         elif spider.name == 'kdlspider':
             today = time.strftime('%Y-%m-%d', time.localtime())
             filename = base_dir + '/result/' + today + '_kdl_proxy.txt'
-            with open(filename, 'a') as fp:
-                fp.write(item['ip'].strip() + '\t')
-                fp.write(item['port'].strip() + '\t')
-                fp.write(item['protocol'].strip() + '\t')
-                fp.write(item['type'].strip() + '\t')
-                fp.write(item['location'].strip() + '\t')
-                fp.write(item['source'].strip() + '\t\n')
+            with open(filename, 'a', encoding='gbk') as fp:
+                fp.write(item['addr'].strip() + '\n')
+
 
         return item

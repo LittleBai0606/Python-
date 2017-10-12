@@ -24,6 +24,8 @@ NEWSPIDER_MODULE = 'proxy.spiders'
 ROBOTSTXT_OBEY = True
 COOKIES_ENABLED = False
 DOWNLOAD_DELAY = 1
+#用dxdlspider时下面这句要有
+#用kdlspider时下面这句要注释
 #USER_AGENT=random.choice(userAgents.pcUserAgent)
 ITEM_PIPELINES = {
     'proxy.pipelines.ProxyPipeline':300,

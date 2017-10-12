@@ -19,12 +19,9 @@ class KdlspiderSpider(scrapy.Spider):
 
         for li in main:
             item = ProxyItem()
-            item['ip'] = li.xpath('td/text()').extract()[0]
-            item['port'] = li.xpath('td/text()').extract()[1]
-            item['protocol'] = li.xpath('td/text()').extract()[2]
-            item['type'] = li.xpath('td/text()').extract()[3]
-            item['location'] = li.xpath('td/text()').extract()[4]
-            item['source'] = 'kuaidaili'
+            ip = li.xpath('td/text()').extract()[0]
+            port = li.xpath('td/text()').extract()[1]
+            item['addr'] = ip + ':'+ port
             items.append(item)
         return items
 

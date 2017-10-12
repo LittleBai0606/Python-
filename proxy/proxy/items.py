@@ -13,10 +13,4 @@ class ProxyItem(scrapy.Item):
     # name = scrapy.Field()
 
     #爬虫十分简单，要ip+端口，所以一个字段就够用了
-    ip = scrapy.Field()
     addr = scrapy.Field()
-    port = scrapy.Field()
-    type = scrapy.Field()
-    location = scrapy.Field()
-    protocol = scrapy.Field()
-    source = scrapy.Field()
