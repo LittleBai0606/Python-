@@ -12,16 +12,21 @@ class DxdlspiderSpider(scrapy.Spider):
         start_urls.append('http://www.xicidaili.com/nn/' +str(i))
 
     def parse(self, response):
-        #先实例化一个item
-        item = ProxyItem()
-
-        main = response.xpath('//table[@id=ip_list]/tbody/tr')
-
-        for li in main:
-            ip = li.xpath('td/text()').extract()[1]
-            port = li.xpath('td/text()').extract()[2]
-            item['addr'] = ip + ':' + port
-            yield item
+        subSelector = response.xpath('//tr[@class=""]|//tr[@class="odd"]')
+        items = []
+        for sub in subSelector:
+            item = ProxyItem()
+            item['ip'] = sub.xpath('.//td[2]/text()').extract()[0]
+            item['port'] = sub.xpath('.//td[3]/text()').extract()[0]
+            item['type'] = sub.xpath('.//td[5]/text()').extract()[0]
+            if sub.xpath('.//td[4]/a/text()'):
+                item['location'] = sub.xpath('//td[4]/a/text()').extract()[0]
+            else:
+                item['location'] = sub.xpath('.//td[4]/text()').extract()[0]
+            item['protocol'] = sub.xpath('.//td[6]/text()').extract()[0]
+            item['source'] = 'xicidaili'
+            items.append(item)
+        return items
 
 
 

@@ -13,12 +13,18 @@ class KdlspiderSpider(scrapy.Spider):
 
     def parse(self, response):
         #先实例化一个item
-        item = ProxyItem()
+        items = []
 
         main = response.xpath('//table[@class="table table-bordered table-striped"]/tbody/tr')
 
         for li in main:
-            ip = li.xpath('td/text()').extract()[0]
-            port = li.xpath('td/text()').extract()[1]
-            item['addr'] = ip + ":" + port
-            yield item
+            item = ProxyItem()
+            item['ip'] = li.xpath('td/text()').extract()[0]
+            item['port'] = li.xpath('td/text()').extract()[1]
+            item['protocol'] = li.xpath('td/text()').extract()[2]
+            item['type'] = li.xpath('td/text()').extract()[3]
+            item['location'] = li.xpath('td/text()').extract()[4]
+            item['source'] = 'kuaidaili'
+            items.append(item)
+        return items
+

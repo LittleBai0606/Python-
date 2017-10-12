@@ -8,6 +8,8 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
+import random
+from proxy import userAgents
 
 BOT_NAME = 'proxy'
 
@@ -20,10 +22,13 @@ NEWSPIDER_MODULE = 'proxy.spiders'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
+COOKIES_ENABLED = False
 DOWNLOAD_DELAY = 1
+#USER_AGENT=random.choice(userAgents.pcUserAgent)
 ITEM_PIPELINES = {
     'proxy.pipelines.ProxyPipeline':300,
 }
+
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
