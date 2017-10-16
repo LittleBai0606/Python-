@@ -7,24 +7,80 @@
 
 import scrapy
 
-
-class LianjiaItem(scrapy.Item):
+class XiaoquItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    region = scrapy.Field()  # 行政区域
-    href = scrapy.Field()  # 房源链接
-    name = scrapy.Field()  # 房源名称
-    style = scrapy.Field()  # 房源结构
-    area = scrapy.Field()  # 小区
-    orientation = scrapy.Field()  # 朝向
-    decoration = scrapy.Field()  # 装修
-    elevator = scrapy.Field()  # 电梯
-    floor = scrapy.Field()  # 楼层高度
-    build_year = scrapy.Field()  # 建造时间
-    sign_time = scrapy.Field()  # 签约时间
-    unit_price = scrapy.Field()  # 每平米单价
-    total_price = scrapy.Field()  # 总价
-    fangchan_class = scrapy.Field()  # 房产类型
-    school = scrapy.Field()  # 周边学校
-    subway = scrapy.Field()  # 周边地铁
+    建筑年代 = scrapy.Field()
+    建筑类型 = scrapy.Field()
+    物业费用 = scrapy.Field()
+    物业公司 = scrapy.Field()
+    开发商 = scrapy.Field()
+    楼栋总数 = scrapy.Field()
+    房屋总数 = scrapy.Field()
+    附近门店 = scrapy.Field()
+    小区 = scrapy.Field()
+    小区均价 = scrapy.Field()
+    小区坐标 = scrapy.Field()
+    小区链接 = scrapy.Field()
+    大区 = scrapy.Field()
+    片区 = scrapy.Field()
 
+class ZaishouItem(scrapy.Item):
+    标题 = scrapy.Field()
+    总价 = scrapy.Field()
+    单价 = scrapy.Field()
+    链家编号 = scrapy.Field()
+    小区 = scrapy.Field()
+    房屋链接 = scrapy.Field()
+    关注 = scrapy.Field()
+    带看 = scrapy.Field()
+    房屋户型 = scrapy.Field()
+    所在楼层 = scrapy.Field()
+    建筑面积 = scrapy.Field()
+    户型结构 = scrapy.Field()
+    套内面积 = scrapy.Field()
+    建筑类型 = scrapy.Field()
+    房屋朝向 = scrapy.Field()
+    建筑结构 = scrapy.Field()
+    装修情况 = scrapy.Field()
+    梯户比例 = scrapy.Field()
+    配备电梯 = scrapy.Field()
+    产权年限 = scrapy.Field()
+    挂牌时间 = scrapy.Field()
+    交易权属 = scrapy.Field()
+    上次交易 = scrapy.Field()
+    房屋用途 = scrapy.Field()
+    房屋年限 = scrapy.Field()
+    产权所属 = scrapy.Field()
+    抵押信息 = scrapy.Field()
+    房本备件 = scrapy.Field()
+
+class ChengjiaoItem(scrapy.Item):
+    标题 = scrapy.Field()
+    总价 = scrapy.Field()
+    单价 = scrapy.Field()
+    小区 = scrapy.Field()
+    成交日期 = scrapy.Field()
+    房屋链接 = scrapy.Field()
+    关注 = scrapy.Field()
+    带看 = scrapy.Field()
+    房屋户型 = scrapy.Field()
+    所在楼层 = scrapy.Field()
+    建筑面积 = scrapy.Field()
+    户型结构 = scrapy.Field()
+    套内面积 = scrapy.Field()
+    建筑类型 = scrapy.Field()
+    房屋朝向 = scrapy.Field()
+    建成年代 = scrapy.Field()
+    装修情况 = scrapy.Field()
+    建筑结构 = scrapy.Field()
+    供暖方式 = scrapy.Field()
+    梯户比例 = scrapy.Field()
+    产权年限 = scrapy.Field()
+    配备电梯 = scrapy.Field()
+    链家编号 = scrapy.Field()
+    交易权属 = scrapy.Field()
+    挂牌时间 = scrapy.Field()
+    房屋用途 = scrapy.Field()
+    房屋年限 = scrapy.Field()
+    房权所属 = scrapy.Field()
