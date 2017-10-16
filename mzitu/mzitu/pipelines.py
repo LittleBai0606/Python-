@@ -16,7 +16,7 @@ class MzituPipeline(object):
             'Referer': item['base_urls'],
 
         }
-        base_dir = 'D:/PycharmProjects/Python爬虫/mzitu/meizitu/'
+        base_dir = 'D:/meizitu/'
         # 防止目录不存在！
         if not os.path.exists(base_dir + item['name']):
             os.makedirs(base_dir + item['name'])
