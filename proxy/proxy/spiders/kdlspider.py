@@ -8,7 +8,7 @@ class KdlspiderSpider(scrapy.Spider):
     allowed_domains = ['kuaidaili.com']
     start_urls = []
 
-    for i in range(1, 6):
+    for i in range(1, 10):
         start_urls.append('http://www.kuaidaili.com/free/inha/' + str(i) + '/')
 
     def parse(self, response):

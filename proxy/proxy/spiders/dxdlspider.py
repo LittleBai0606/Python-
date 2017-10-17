@@ -8,7 +8,7 @@ class DxdlspiderSpider(scrapy.Spider):
     allowed_domains = ['xicidaili.com']
     start_urls = []
 
-    for i in range(1, 6):
+    for i in range(1, 10):
         start_urls.append('http://www.xicidaili.com/nn/' +str(i))
 
     def parse(self, response):

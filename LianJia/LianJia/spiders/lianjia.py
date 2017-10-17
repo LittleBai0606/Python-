@@ -7,18 +7,18 @@ import json
 import datetime
 from bs4 import BeautifulSoup
 import lxml
-from LianJia.items import XiaoquItem, ZaishouItem, ChengjiaoItem
+from  ..items import XiaoquItem, ZaishouItem, ChengjiaoItem
 from lxml import etree
 
 
 class LianjiaSpider(scrapy.Spider):
     name = 'lianjia'
     allowed_domains = ['gz.lianjia.com']
-    start_urls = ['https://gz.lianjia.com/xiaoqu/']
+    start_urls = 'https://gz.lianjia.com/xiaoqu/'
 
 
     def start_requests(self):
-            yield scrapy.Request(url= self.start_urls,callback=self.parse_daqu, dont_filter=True)
+        yield scrapy.Request(url= self.start_urls,callback=self.parse_daqu, dont_filter=True)
 
     def parse_daqu(self, response):
         dists = response.xpath('//div[@data-role="ershoufang"]/div/a/@href').extract()
@@ -42,7 +42,7 @@ class LianjiaSpider(scrapy.Spider):
             yield scrapy.Request(url = url, callback=self.parse_xiaoqu_index, dont_filter=True)
 
     def parse_xiaoqu_index(self, response):
-        item = LianjiaItem()
+        item = XiaoquItem()
         xiaoqu = response.xpath('//h1[@class="detailTitle"]/text()').extract()[0]
         xiaoqujunjia = float(response.xpath('//span[@class="xiaoquUnitPrice"]/text()').extract()[0]) if response.xpath(
             '//span[@class="xiaoquUnitPrice"]/text()').extract() else ''
@@ -54,6 +54,7 @@ class LianjiaSpider(scrapy.Spider):
         xiaoquinfo = [i.text for i in soup.select('div.xiaoquInfo div')]
         xiaoqudetail = {}
         for i in xiaoquinfo:
+            key = i[:4]
             if key.startswith("开发商"):
                 key = i[:3]
                 data = i[3:]

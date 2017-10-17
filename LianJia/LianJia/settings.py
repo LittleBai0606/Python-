@@ -15,11 +15,22 @@ SPIDER_MODULES = ['LianJia.spiders']
 NEWSPIDER_MODULE = 'LianJia.spiders'
 
 
+ITEM_PIPELINES = {
+    'LianJia.pipelines.LianjiaPipeline':300,
+}
+
+#链接到数据库的信息
+MONGO_URI = 'mongodb://localhost:27017'
+MONGO_HOST = '127.0.0.1'
+MONGO_PORT = 27017
+MONGO_DATABASE = 'LianJia'
+
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'LianJia (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+#ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -27,13 +38,13 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+#DOWNLOAD_DELAY = 2
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
-#CONCURRENT_REQUESTS_PER_IP = 16
+#CONCURRENT_REQUESTS_PER_DOMAIN = 2
+#CONCURRENT_REQUESTS_PER_IP = 2
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -52,10 +63,13 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'LianJia.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
 
+HTTP_PROXY = 'http://127.0.0.1:8123'
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    'LianJia.middlewares.RotateUserAgentMiddleware': 400  # ,
+}
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 #EXTENSIONS = {
@@ -88,3 +102,12 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+PROXIES = [
+    {'ip_port': '113.250.152.229:8118', 'user_pass': ''},
+    {'ip_port': '113.121.254.37:808', 'user_pass': ''},
+    {'ip_port': '175.155.24.7:808', 'user_pass': ''},
+    {'ip_port': '175.155.24.48:808', 'user_pass': ''},
+    {'ip_port': '27.159.127.97:8118', 'user_pass': ''},
+    {'ip_port': '61.191.173.31:808', 'user_pass': ''},
+]

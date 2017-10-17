@@ -65,4 +65,4 @@ def test(filename='blank.txt'):
 
 
 if __name__ == '__main__':
-    test('2017-10-12_kdl_proxy.txt')
+    test('2017-10-17_dxdl_proxy.txt')
