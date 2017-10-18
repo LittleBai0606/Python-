@@ -1,7 +1,5 @@
 import scrapy
 import requests
-import time
-text = '[203]'
+import  os
 
-print(text.replace('[', '').replace(']', ''))
-print(time.strftime("%H%M%S"))
+print(os.getcwd())

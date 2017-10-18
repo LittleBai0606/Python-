@@ -8,8 +8,7 @@
 import scrapy
 
 
-class JiandanItem(scrapy.Item):
+class DoubanItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    picID = scrapy.Field()
-    picUrl = scrapy.Field()
+    pass

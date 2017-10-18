@@ -22,10 +22,11 @@ class MeiziSpider(scrapy.Spider):
         lists = response.xpath('//ol[@class="commentlist"]/li')
         for list in lists:
             item = JiandanItem()
-            picUrl = response.xpath('.//p/img/@src').extract()[0]
+            picUrl = list.xpath('.//p/a/@href').extract()[0]
             if picUrl.endswith('.gif'):
                 break
-            item['author'] = response.xpath('.//div[@class="author"]/strong/text()').extract()[0]
+            picID = list.xpath('./@id').extract()[0]
+            item['picID'] = picID.replace('comment-', '')
             item['picUrl'] = 'https:' + picUrl
             yield item
 
