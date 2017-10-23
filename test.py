@@ -1,5 +1,5 @@
 import scrapy
 import requests
 import  os
-
-print(os.getcwd())
+import platform
+print(platform.platform())
