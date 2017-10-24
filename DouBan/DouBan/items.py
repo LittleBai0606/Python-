@@ -20,5 +20,17 @@ class BookItem(scrapy.Item):
     price = scrapy.Field()
     url = scrapy.Field()
 
+class MovieItem(scrapy.Item):
+    name = scrapy.Field()
+    othername = scrapy.Field()
+    rating_nums = scrapy.Field()
+    quote = scrapy.Field()
+    comment_nums = scrapy.Field()
+    director = scrapy.Field()
+    time = scrapy.Field()
+    country = scrapy.Field()
+    type = scrapy.Field()
+    url = scrapy.Field()
+
 
 
